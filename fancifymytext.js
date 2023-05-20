@@ -21,22 +21,17 @@ function changeStyle() {
     }
 }
 
-function capitalizeAndMoo() {
-    const inputTextArea = document.getElementById("inputText");
-    const text = inputTextArea.value;
-
-    let sentences = text.split(". ");
+// Add event listener to the "Moo" button
+document.getElementById("upperAndMoo").addEventListener("click", function() {
+    var inputTextArea = document.getElementById("inputText");
+    var text = inputTextArea.value.toUpperCase();
+    var sentences = text.split(". ");
     for (var i = 0; i < sentences.length; i++) {
         var words = sentences[i].split(" ");
-        for (var j = 0; j < words.length; j++) {
-            if (j === words.length - 1) {
-                words[j] = words[j].toUpperCase() + "-Moo";
-            } else {
-                words[j] = words[j].toUpperCase();
-            }
-        }
+        var lastWordIndex = words.length - 1;
+        words[lastWordIndex] = words[lastWordIndex] + "-Moo";
         sentences[i] = words.join(" ");
     }
-
     inputTextArea.value = sentences.join(". ");
-}
+});
+
